@@ -1,0 +1,151 @@
+@startuml
+
+Livre <|-- Enfant
+Livre <|-- Scolaire
+
+Class Livre {
+    auteur : String
+    nombresPage : Integer
+}
+
+Class Enfant {
+    ageMin : Integer
+    ageMax : Integer
+}
+
+Class Scolaire {
+    Discipline : String
+    Niveau : String
+}
+
+Salarié "1" --  "*"Salarié : chef  < employé
+
+
+Personne <|-- Etudiant
+Personne <|-- Enseignant
+
+Vehicule <|-- Voiture
+Vehicule <|-- Bateau
+Vehicule <|-- Avion
+
+Class Vehicule{
+    numVehicule : Integer
+    dateFabrication : Integer
+}
+
+Class Voiture{
+    puisFiscale : Integer
+}
+
+Class Bateau{
+    hauteurMat : Integer
+    nombreTorpilles : Integer
+    pavillonBateau : String
+}
+Class Avion{
+    nombreReac : Integer
+    superficieAile : Float
+}
+
+Personnes <|-- Conducteur
+Personnes <|-- Lyceen
+Conducteur  "*" --  "*" Bus : > conduire
+Lyceen "*" --  "*" Bus : > prendre
+AssignationBus ..(Conducteur, Bus)
+(Lyceen, Bus) .. Date
+
+
+Bus "1" *--  "1" Carrosserie
+Bus "1" *--  "6" Roues
+Bus "1" *--  "*" Siege
+Bus "1" *--  "*" Vitres
+
+Class Personnes{
+    nom : String
+    age : Integer
+    sexe : String
+}
+Class Conducteur{
+    numeroPermis : Integer
+}
+Class Bus{
+    numImmat : Integer
+    dateMiseService : Integer
+    nombreAnneeService : Integer
+    poidsTotal :Integer
+}
+Class Carrosserie{
+    poids : Integer
+    couleur : String
+}
+Class Roues{
+    pression : Float
+    diametre : Float
+}
+Class Siege{
+    couleur : String
+}
+Class Vitres{
+    epaisseur : Float
+    poids : Float
+}
+
+Class AssignationBus {
+    dateDebut : Date
+    dateFin : Date
+}
+
+Class Date{
+    dateDebut : Date
+    dateFin : Date
+}
+
+Vol -- SegmentVol
+SegmentVol "*"--  "*" SegmentVol : villeDepart > villeArrivee
+
+
+Class Vol{
+    villeDepart : String
+    villeArrivee  :String
+    nombreSegment : Integer
+}
+
+Class SegmentVol{
+    villeDepart : String
+    villeArrivee : String
+    copilote : String
+    commandantBord : String
+    avion : String
+}
+
+Ordinateur "1" *-- "1 .. *" Moniteur
+Ordinateur "1" *-- "1" Clavier
+Ordinateur "1" o-- "0 .. 1" Souris
+Ordinateur "1" -- "1" Boitier
+
+Class Boitier{
+    chassis : String
+}
+
+CartePeripherique <|-- CarteSon
+CartePeripherique <|-- CarteReseau
+CartePeripherique <|-- CarteGraphique
+
+Boitier "1" o-- "0 .. 1" CarteSon
+Boitier "1" o-- "0 .. 1" CarteReseau
+Boitier "1" o-- "0 .. 4" CarteGraphique
+Boitier "1" o-- "0 .. 1" CarteMere
+Boitier "1" o-- "0 .. 1" Ventilateur
+Boitier "1" o-- "1 .. *" Stockage
+Boitier "1" o-- "0 .. *" Memoire
+
+Class Stockage{
+    typeMemoire : String
+    nombre : Integer
+}
+
+Class Stockage{
+    typeStockage : String
+    nombre : Integer
+}
+@enduml
