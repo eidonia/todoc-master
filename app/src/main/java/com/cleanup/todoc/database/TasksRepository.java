@@ -21,7 +21,7 @@ public class TasksRepository {
 
 
     public TasksRepository(Application application) {
-        CleanUpDatabase db = CleanUpDatabase.getINSTANCE(application);
+        ToDocDatabase db = ToDocDatabase.getINSTANCE(application);
         taskDAO = db.taskDAO();
         projectDAO = db.projectDAO();
         mAllTasks = taskDAO.getTask();
@@ -34,13 +34,13 @@ public class TasksRepository {
 
     public void insert(Task task) {
         Log.e(":insert", "" + task.getProjectId());
-        CleanUpDatabase.databaseWriterExecutor.execute(() -> {
+        ToDocDatabase.databaseWriterExecutor.execute(() -> {
             taskDAO.insertTask(task);
         });
     }
 
     public void delete(long id) {
-        CleanUpDatabase.databaseWriterExecutor.execute(() -> {
+        ToDocDatabase.databaseWriterExecutor.execute(() -> {
             taskDAO.deleteTask(id);
         });
     }

@@ -17,11 +17,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Project.class, Task.class}, version = 1, exportSchema = false)
-public abstract class CleanUpDatabase extends RoomDatabase {
+public abstract class ToDocDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriterExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-    private static volatile CleanUpDatabase INSTANCE;
+    private static volatile ToDocDatabase INSTANCE;
+
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
@@ -36,11 +37,11 @@ public abstract class CleanUpDatabase extends RoomDatabase {
         }
     };
 
-    public static CleanUpDatabase getINSTANCE(Context context) {
+    public static ToDocDatabase getINSTANCE(Context context) {
         if (INSTANCE == null) {
-            synchronized (CleanUpDatabase.class) {
+            synchronized (ToDocDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CleanUpDatabase.class, "MyDatabase.db")
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ToDocDatabase.class, "MyDatabase.db")
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }

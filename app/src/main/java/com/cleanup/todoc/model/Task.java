@@ -28,6 +28,8 @@ public class Task {
     /**
      * The timestamp when the task has been created
      */
+    @NonNull
+    @ColumnInfo(name = "createdAt")
     private long creationTimestamp;
 
     /**

@@ -1,0 +1,25 @@
+@startuml
+
+class Task
+class Project
+
+Task o-- Project
+
+
+
+class Task{
+id : long [PK]
+projectId : long [FK]
+name : String
+creationTimestamp : long
+}
+
+class Project{
+id : long [PK]
+name : String
+color : int
+Project[] getAllProjects()
+Project getProjectById(long id)
+}
+
+@enduml
