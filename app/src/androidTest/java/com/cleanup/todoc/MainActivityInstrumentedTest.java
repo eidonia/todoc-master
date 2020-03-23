@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 
 import com.cleanup.todoc.ui.MainActivity;
 
@@ -31,8 +31,10 @@ import static org.junit.Assert.assertThat;
  */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityInstrumentedTest {
+
     @Rule
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
+
 
     @Test
     public void addAndRemoveTask() {
