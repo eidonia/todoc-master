@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 
 import java.util.Date;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class TaskDaoTest {
@@ -53,7 +53,6 @@ public class TaskDaoTest {
         Task test = new Task(project.getId(), "Tache1", new Date().getTime());
         this.toDocDatabase.taskDAO().insertTask(test);
         Task task = LiveDataUtilsTest.getValue(this.toDocDatabase.taskDAO().getTaskTest(test.getName()));
-        assertTrue(task.getName().equals(test.getName()));
-
+        assertEquals(task.getName(), test.getName());
     }
 }
