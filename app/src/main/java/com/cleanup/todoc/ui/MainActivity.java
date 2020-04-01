@@ -25,7 +25,6 @@ import com.cleanup.todoc.model.Task;
 import com.cleanup.todoc.model.ViewModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -116,24 +115,40 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         int id = item.getItemId();
 
         if (id == R.id.filter_alphabetical) {
-            sortMethod = SortMethod.ALPHABETICAL;
+            mViewModel.getAllTasksAsc().observe(this, this::setTaskAsc);
         } else if (id == R.id.filter_alphabetical_inverted) {
-            sortMethod = SortMethod.ALPHABETICAL_INVERTED;
+            mViewModel.getAllTasksDesc().observe(this, this::setTaskDesc);
         } else if (id == R.id.filter_oldest_first) {
-            sortMethod = SortMethod.OLD_FIRST;
+            mViewModel.getAllTasksDate().observe(this, this::setTaskDate);
         } else if (id == R.id.filter_recent_first) {
-            sortMethod = SortMethod.RECENT_FIRST;
+            mViewModel.getAllTasksDateDesc().observe(this, this::setTaskDescDate);
         }
-
-        updateTasks();
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setTaskDescDate(List<Task> tasks) {
+        this.tasks = tasks;
+        updateTasks();
+    }
+
+    private void setTaskDate(List<Task> tasks) {
+        this.tasks = tasks;
+        updateTasks();
+    }
+
+    private void setTaskDesc(List<Task> tasks) {
+        this.tasks = tasks;
+        updateTasks();
+    }
+
+    private void setTaskAsc(List<Task> tasks) {
+        this.tasks = tasks;
+        updateTasks();
     }
 
     @Override
     public void onDeleteTask(Task task) {
         mViewModel.delete(task.getId());
-        updateTasks();
     }
 
     /**
@@ -197,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
 
     private void addTask(@NonNull Task task) {
         mViewModel.insert(task);
-        updateTasks();
     }
 
     private void updateTasks() {
@@ -207,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         } else {
             lblNoTasks.setVisibility(View.GONE);
             listTasks.setVisibility(View.VISIBLE);
-            switch (sortMethod) {
+            /*switch (sortMethod) {
                 case ALPHABETICAL:
                     Collections.sort(tasks, new Task.TaskAZComparator());
                     break;
@@ -221,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
                     Collections.sort(tasks, new Task.TaskOldComparator());
                     break;
 
-            }
+            }*/
         }
         adapter.updateTasks(tasks);
     }

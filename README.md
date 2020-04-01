@@ -1,5 +1,5 @@
 # ToDoc
-Ma réu est une application de gestion de tâche avec persistance des données en local.
+ToDoc est une application de gestion de tâche avec persistance des données en local.
 
 ## Installation
 Lancer l'application via Android Studio.

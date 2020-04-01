@@ -24,5 +24,17 @@ public interface TaskDAO {
 
     @Query("SELECT * FROM Task WHERE name = :name")
     LiveData<Task> getTaskTest(String name);
+
+    @Query("SELECT * FROM Task ORDER BY name")
+    LiveData<List<Task>> getTaskAsc();
+
+    @Query("SELECT * FROM Task ORDER BY name DESC")
+    LiveData<List<Task>> getTaskDesc();
+
+    @Query("SELECT * FROM Task ORDER BY createdAt")
+    LiveData<List<Task>> getTaskDate();
+
+    @Query("SELECT * FROM Task ORDER BY createdAt DESC")
+    LiveData<List<Task>> getTaskDateDesc();
 }
 

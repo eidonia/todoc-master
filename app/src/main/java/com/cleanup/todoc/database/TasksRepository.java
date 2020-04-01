@@ -17,6 +17,10 @@ public class TasksRepository {
     private TaskDAO taskDAO;
     private ProjectDAO projectDAO;
     private LiveData<List<Task>> mAllTasks;
+    private LiveData<List<Task>> mAllTasksAsc;
+    private LiveData<List<Task>> mAllTasksDesc;
+    private LiveData<List<Task>> mAllTasksDate;
+    private LiveData<List<Task>> mAllTasksDateDesc;
     private LiveData<Project[]> mAllProjects;
 
 
@@ -25,11 +29,31 @@ public class TasksRepository {
         taskDAO = db.taskDAO();
         projectDAO = db.projectDAO();
         mAllTasks = taskDAO.getTask();
+        mAllTasksAsc = taskDAO.getTaskAsc();
+        mAllTasksDesc = taskDAO.getTaskDesc();
+        mAllTasksDate = taskDAO.getTaskDate();
+        mAllTasksDateDesc = taskDAO.getTaskDateDesc();
         mAllProjects = projectDAO.getProject();
     }
 
     public LiveData<List<Task>> getAllTasks() {
         return mAllTasks;
+    }
+
+    public LiveData<List<Task>> getTaskAsc() {
+        return mAllTasksAsc;
+    }
+
+    public LiveData<List<Task>> getTaskDesc() {
+        return mAllTasksDesc;
+    }
+
+    public LiveData<List<Task>> getTaskDate() {
+        return mAllTasksDate;
+    }
+
+    public LiveData<List<Task>> getTaskDateDesc() {
+        return mAllTasksDateDesc;
     }
 
     public void insert(Task task) {
