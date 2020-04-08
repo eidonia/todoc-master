@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     @NonNull
     private List<Task> tasks = new ArrayList<>();
     private final TasksAdapter adapter = new TasksAdapter(this, tasks);
-    @NonNull
-    private SortMethod sortMethod = SortMethod.NONE;
     @Nullable
     private EditText dialogEditText = null;
 
@@ -221,21 +219,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         } else {
             lblNoTasks.setVisibility(View.GONE);
             listTasks.setVisibility(View.VISIBLE);
-            /*switch (sortMethod) {
-                case ALPHABETICAL:
-                    Collections.sort(tasks, new Task.TaskAZComparator());
-                    break;
-                case ALPHABETICAL_INVERTED:
-                    Collections.sort(tasks, new Task.TaskZAComparator());
-                    break;
-                case RECENT_FIRST:
-                    Collections.sort(tasks, new Task.TaskRecentComparator());
-                    break;
-                case OLD_FIRST:
-                    Collections.sort(tasks, new Task.TaskOldComparator());
-                    break;
-
-            }*/
         }
         adapter.updateTasks(tasks);
     }
@@ -292,31 +275,5 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     public void setTask(List<Task> tasks) {
         this.tasks = tasks;
         updateTasks();
-    }
-
-    /**
-     * List of all possible sort methods for task
-     */
-    private enum SortMethod {
-        /**
-         * Sort alphabetical by name
-         */
-        ALPHABETICAL,
-        /**
-         * Inverted sort alphabetical by name
-         */
-        ALPHABETICAL_INVERTED,
-        /**
-         * Lastly created first
-         */
-        RECENT_FIRST,
-        /**
-         * First created first
-         */
-        OLD_FIRST,
-        /**
-         * No sort
-         */
-        NONE
     }
 }

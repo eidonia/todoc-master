@@ -30,7 +30,6 @@ public abstract class ToDocDatabase extends RoomDatabase {
             databaseWriterExecutor.execute(() -> {
                 TaskDAO taskDAO = INSTANCE.taskDAO();
                 ProjectDAO projectDAO = INSTANCE.projectDAO();
-
                 projectDAO.insert(Project.getAllProjects());
             });
 

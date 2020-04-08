@@ -1,7 +1,6 @@
 package com.cleanup.todoc.database;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -57,7 +56,6 @@ public class TasksRepository {
     }
 
     public void insert(Task task) {
-        Log.e(":insert", "" + task.getProjectId());
         ToDocDatabase.databaseWriterExecutor.execute(() -> {
             taskDAO.insertTask(task);
         });

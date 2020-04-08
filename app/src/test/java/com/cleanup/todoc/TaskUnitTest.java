@@ -1,7 +1,6 @@
 package com.cleanup.todoc;
 
 import com.cleanup.todoc.model.Task;
-import com.cleanup.todoc.model.ViewModel;
 
 import org.junit.Test;
 
@@ -21,8 +20,6 @@ import static org.junit.Assert.assertSame;
 
 public class TaskUnitTest {
 
-
-    private ViewModel mViewModel;
     @Test
     public void test_projects() {
         final Task task1 = new Task(1, 1, "task 1", new Date().getTime());
