@@ -13,11 +13,11 @@ import java.util.List;
 public class ViewModel extends AndroidViewModel {
 
     private TasksRepository mRepos;
-    private LiveData<List<Task>> mAllTasks;
-    private LiveData<List<Task>> mAllTasksAsc;
-    private LiveData<List<Task>> mAllTasksDesc;
-    private LiveData<List<Task>> mAllTasksDate;
-    private LiveData<List<Task>> mAllTasksDateDesc;
+    private LiveData<List<TaskProject>> mAllTasks;
+    private LiveData<List<TaskProject>> mAllTasksAsc;
+    private LiveData<List<TaskProject>> mAllTasksDesc;
+    private LiveData<List<TaskProject>> mAllTasksDate;
+    private LiveData<List<TaskProject>> mAllTasksDateDesc;
     private LiveData<Project[]> mAllProjects;
 
     public ViewModel(@NonNull Application application) {
@@ -31,23 +31,23 @@ public class ViewModel extends AndroidViewModel {
         mAllTasksDateDesc = mRepos.getTaskDateDesc();
     }
 
-    public LiveData<List<Task>> getAllTasks() {
+    public LiveData<List<TaskProject>> getAllTasks() {
         return mAllTasks;
     }
 
-    public LiveData<List<Task>> getAllTasksAsc() {
+    public LiveData<List<TaskProject>> getAllTasksAsc() {
         return mAllTasksAsc;
     }
 
-    public LiveData<List<Task>> getAllTasksDesc() {
+    public LiveData<List<TaskProject>> getAllTasksDesc() {
         return mAllTasksDesc;
     }
 
-    public LiveData<List<Task>> getAllTasksDate() {
+    public LiveData<List<TaskProject>> getAllTasksDate() {
         return mAllTasksDate;
     }
 
-    public LiveData<List<Task>> getAllTasksDateDesc() {
+    public LiveData<List<TaskProject>> getAllTasksDateDesc() {
         return mAllTasksDateDesc;
     }
 

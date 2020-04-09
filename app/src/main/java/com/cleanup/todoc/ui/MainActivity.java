@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleanup.todoc.R;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.model.TaskProject;
 import com.cleanup.todoc.model.ViewModel;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     public AlertDialog dialog = null;
     private Project[] allProjects;
     @NonNull
-    private List<Task> tasks = new ArrayList<>();
+    private List<TaskProject> tasks = new ArrayList<>();
     private final TasksAdapter adapter = new TasksAdapter(this, tasks);
     @Nullable
     private EditText dialogEditText = null;
@@ -124,29 +125,29 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         return super.onOptionsItemSelected(item);
     }
 
-    private void setTaskDescDate(List<Task> tasks) {
+    private void setTaskDescDate(List<TaskProject> tasks) {
         this.tasks = tasks;
         updateTasks();
     }
 
-    private void setTaskDate(List<Task> tasks) {
+    private void setTaskDate(List<TaskProject> tasks) {
         this.tasks = tasks;
         updateTasks();
     }
 
-    private void setTaskDesc(List<Task> tasks) {
+    private void setTaskDesc(List<TaskProject> tasks) {
         this.tasks = tasks;
         updateTasks();
     }
 
-    private void setTaskAsc(List<Task> tasks) {
+    private void setTaskAsc(List<TaskProject> tasks) {
         this.tasks = tasks;
         updateTasks();
     }
 
     @Override
-    public void onDeleteTask(Task task) {
-        mViewModel.delete(task.getId());
+    public void onDeleteTask(TaskProject task) {
+        mViewModel.delete(task.task.getId());
     }
 
     /**
@@ -272,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
         }
     }
 
-    public void setTask(List<Task> tasks) {
+    public void setTask(List<TaskProject> tasks) {
         this.tasks = tasks;
         updateTasks();
     }

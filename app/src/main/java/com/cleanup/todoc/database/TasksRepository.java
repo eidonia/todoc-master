@@ -8,6 +8,7 @@ import com.cleanup.todoc.database.dao.ProjectDAO;
 import com.cleanup.todoc.database.dao.TaskDAO;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.model.TaskProject;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ public class TasksRepository {
 
     private TaskDAO taskDAO;
     private ProjectDAO projectDAO;
-    private LiveData<List<Task>> mAllTasks;
-    private LiveData<List<Task>> mAllTasksAsc;
-    private LiveData<List<Task>> mAllTasksDesc;
-    private LiveData<List<Task>> mAllTasksDate;
-    private LiveData<List<Task>> mAllTasksDateDesc;
+    private LiveData<List<TaskProject>> mAllTasks;
+    private LiveData<List<TaskProject>> mAllTasksAsc;
+    private LiveData<List<TaskProject>> mAllTasksDesc;
+    private LiveData<List<TaskProject>> mAllTasksDate;
+    private LiveData<List<TaskProject>> mAllTasksDateDesc;
     private LiveData<Project[]> mAllProjects;
 
 
@@ -35,23 +36,23 @@ public class TasksRepository {
         mAllProjects = projectDAO.getProject();
     }
 
-    public LiveData<List<Task>> getAllTasks() {
+    public LiveData<List<TaskProject>> getAllTasks() {
         return mAllTasks;
     }
 
-    public LiveData<List<Task>> getTaskAsc() {
+    public LiveData<List<TaskProject>> getTaskAsc() {
         return mAllTasksAsc;
     }
 
-    public LiveData<List<Task>> getTaskDesc() {
+    public LiveData<List<TaskProject>> getTaskDesc() {
         return mAllTasksDesc;
     }
 
-    public LiveData<List<Task>> getTaskDate() {
+    public LiveData<List<TaskProject>> getTaskDate() {
         return mAllTasksDate;
     }
 
-    public LiveData<List<Task>> getTaskDateDesc() {
+    public LiveData<List<TaskProject>> getTaskDateDesc() {
         return mAllTasksDateDesc;
     }
 
